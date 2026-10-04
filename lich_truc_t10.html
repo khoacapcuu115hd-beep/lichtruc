@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Lịch Trực Tháng 10/2026 - BVĐK Hải Dương</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f0f2f5;
+  color: #1a1a1a;
+  font-size: 15px;
+  line-height: 1.4;
+  overflow-x: hidden;
+}
+
+.app { max-width: 500px; margin: 0 auto; min-height: 100vh; background: #f0f2f5; padding-bottom: 70px; }
+
+/* HEADER */
+.header {
+  background: linear-gradient(135deg, #1a73e8 0%, #1565c0 100%);
+  color: white;
+  padding: 16px 16px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(26, 115, 232, 0.3);
+}
+.header-top { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.header-icon {
+  width: 32px; height: 32px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0; position: relative;
+}
+.header-icon .badge {
+  position: absolute; top: -4px; right: -4px;
+  background: #ff3b30; color: white;
+  font-size: 9px; font-weight: 700;
+  padding: 2px 5px; border-radius: 8px;
+  border: 2px solid #1a73e8;
+}
+.header-title { font-size: 20px; font-weight: 700; letter-spacing: -0.3px; }
+.header-subtitle { font-size: 13px; opacity: 0.9; line-height: 1.4; }
+
+/* SEARCH */
+.search-section { background: white; padding: 12px 16px; border-bottom: 1px solid #e8eaed; }
+.search-box { position: relative; }
+.search-box input {
+  width: 100%; padding: 12px 16px 12px 42px;
+  border: 1.5px solid #dadce0; border-radius: 24px;
+  font-size: 15px; background: #f8f9fa;
+  transition: all 0.2s; color: #1a1a1a;
+}
+.search-box input:focus {
+  outline: none; border-color: #1a73e8;
+  background: white; box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+}
+.search-icon {
+  position: absolute; left: 14px; top: 50%;
+  transform: translateY(-50%);
+  color: #5f6368; font-size: 16px; pointer-events: none;
+}
+.filter-row { display: flex; gap: 8px; margin-top: 10px; }
+.filter-select {
+  flex: 1; padding: 10px 32px 10px 14px;
+  border: 1.5px solid #dadce0; border-radius: 10px;
+  font-size: 14px; background: white; color: #1a1a1a;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235f6368' stroke-width='3'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+.btn-today {
+  padding: 10px 18px; border: none; border-radius: 10px;
+  background: #1a73e8; color: white; font-size: 14px;
+  font-weight: 600; cursor: pointer;
+  display: flex; align-items: center; gap: 6px;
+  white-space: nowrap; transition: background 0.2s;
+}
+.btn-today:active { background: #1557b0; }
+.btn-today.active { background: #ea4335; }
+
+/* LEGEND */
+.legend {
+  display: flex; gap: 14px; justify-content: center;
+  padding: 10px 16px; font-size: 12px; color: #5f6368;
+  background: white; border-bottom: 1px solid #e8eaed;
+}
+.legend-item { display: flex; align-items: center; gap: 5px; }
+.legend-box {
+  width: 16px; height: 16px; border-radius: 4px;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+/* STATS */
+.stats-bar {
+  display: flex; gap: 8px; padding: 10px 12px;
+  background: white; border-bottom: 1px solid #e8eaed;
+}
+.stat-mini {
+  flex: 1; text-align: center; padding: 8px;
+  background: #f8f9fa; border-radius: 10px;
+}
+.stat-mini .n { font-size: 18px; font-weight: 800; color: #1a73e8; line-height: 1; }
+.stat-mini .l { font-size: 10px; color: #5f6368; margin-top: 2px; text-transform: uppercase; font-weight: 600; }
+
+/* DEPT LIST */
+.dept-list { padding: 10px 12px; }
+.dept-card {
+  background: white; border-radius: 12px; margin-bottom: 10px;
+  overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  transition: box-shadow 0.2s;
+}
+.dept-card.expanded { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+.dept-header {
+  padding: 14px 16px; display: flex; align-items: center;
+  gap: 12px; cursor: pointer; user-select: none;
+}
+.dept-header:active { background: #f8f9fa; }
+.expand-arrow {
+  width: 20px; height: 20px;
+  display: flex; align-items: center; justify-content: center;
+  color: #5f6368; font-size: 12px;
+  transition: transform 0.25s ease; flex-shrink: 0;
+}
+.dept-card.expanded .expand-arrow { transform: rotate(90deg); }
+.dept-num {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: #1a73e8; color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 15px; flex-shrink: 0;
+}
+.dept-name {
+  flex: 1; font-size: 16px; font-weight: 700; color: #1a1a1a;
+  min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.dept-phone {
+  display: flex; align-items: center; gap: 4px;
+  font-size: 12px; color: #5f6368;
+  background: #f1f3f4; padding: 5px 10px;
+  border-radius: 8px; white-space: nowrap; flex-shrink: 0;
+}
+.today-staff {
+  margin: 0 16px 14px 82px;
+  padding: 8px 12px; background: #e8f5e9;
+  border-radius: 20px; font-size: 13px; color: #2e7d32;
+  display: flex; align-items: center; gap: 6px;
+  font-weight: 500; line-height: 1.4;
+}
+.today-staff .label { font-weight: 700; }
+.today-staff .phone { color: #1b5e20; text-decoration: none; font-weight: 600; }
+
+/* DETAIL */
+.dept-detail {
+  display: none; border-top: 1px solid #e8eaed;
+  padding: 12px 16px 16px; background: #fafbfc;
+}
+.dept-card.expanded .dept-detail { display: block; animation: slideDown 0.25s ease; }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+.detail-title {
+  font-size: 12px; color: #5f6368;
+  text-transform: uppercase; font-weight: 700;
+  letter-spacing: 0.5px; margin-bottom: 10px;
+}
+.day-list {
+  display: flex; flex-direction: column; gap: 6px;
+  max-height: 500px; overflow-y: auto;
+}
+.day-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 8px 10px; background: white; border-radius: 8px;
+  font-size: 13px; border-left: 3px solid #e0e0e0;
+  transition: all 0.15s;
+}
+.day-item.is-today { background: #e8f5e9; border-left-color: #34a853; }
+.day-item.is-sunday { border-left-color: #ea4335; }
+.day-item.is-weekend:not(.is-sunday):not(.is-today) { border-left-color: #fbbc04; }
+.day-num {
+  min-width: 44px; font-weight: 700; color: #1a73e8;
+  font-size: 12px; display: flex; flex-direction: column;
+  align-items: center; line-height: 1.2; padding-top: 2px;
+}
+.day-num .wd { font-size: 10px; color: #5f6368; font-weight: 500; }
+.day-item.is-today .day-num, .day-item.is-today .day-num .wd { color: #2e7d32; }
+.day-staff {
+  flex: 1; display: flex; flex-wrap: wrap;
+  gap: 4px; min-width: 0; padding-top: 2px;
+}
+.staff-tag {
+  background: #f1f3f4; padding: 4px 9px;
+  border-radius: 12px; font-size: 12px;
+  color: #202124; font-weight: 500;
+  display: inline-flex; align-items: center; gap: 4px;
+  line-height: 1.3;
+}
+.staff-tag a { color: #1a73e8; text-decoration: none; font-size: 11px; }
+.day-item.is-today .staff-tag { background: white; }
+.staff-tag.bs { background: #e3f2fd; color: #0d47a1; }
+.staff-tag.bs a { color: #1565c0; }
+
+/* EMPTY */
+.empty { text-align: center; padding: 60px 20px; color: #5f6368; }
+.empty .icon { font-size: 56px; margin-bottom: 12px; opacity: 0.5; }
+.empty h3 { font-size: 16px; font-weight: 600; margin-bottom: 4px; color: #202124; }
+.empty p { font-size: 13px; }
+
+/* BOTTOM NAV */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: white; border-top: 1px solid #e8eaed;
+  display: flex; justify-content: space-around;
+  padding: 8px 0 max(8px, env(safe-area-inset-bottom));
+  z-index: 200; max-width: 500px; margin: 0 auto;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+}
+.nav-item {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; gap: 3px; padding: 6px 0;
+  background: none; border: none; color: #5f6368;
+  font-size: 11px; cursor: pointer;
+  transition: color 0.2s; font-family: inherit;
+}
+.nav-item.active { color: #1a73e8; }
+.nav-icon { font-size: 20px; line-height: 1; }
+
+/* TOAST */
+.toast {
+  position: fixed; bottom: 90px; left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: #202124; color: white;
+  padding: 12px 20px; border-radius: 24px;
+  font-size: 14px; font-weight: 500; opacity: 0;
+  transition: all 0.3s; z-index: 999;
+  pointer-events: none; white-space: nowrap;
+  max-width: 90vw; overflow: hidden; text-overflow: ellipsis;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+.day-list::-webkit-scrollbar { width: 4px; }
+.day-list::-webkit-scrollbar-track { background: transparent; }
+.day-list::-webkit-scrollbar-thumb { background: #dadce0; border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <div class="header">
+    <div class="header-top">
+      <div class="header-icon">📅<span class="badge" id="todayBadge">-</span></div>
+      <div class="header-title">Lịch Trực Tháng 10/2026</div>
+    </div>
+    <div class="header-subtitle">Bệnh viện Đa khoa Hải Dương · Từ 01/10/2026 đến 31/10/2026</div>
+  </div>
+
+  <div class="search-section">
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Tìm tên người trực, SĐT hoặc khoa...">
+    </div>
+    <div class="filter-row">
+      <select class="filter-select" id="deptFilter">
+        <option value="">-- Tất cả khoa --</option>
+      </select>
+      <button class="btn-today" id="btnToday">📍 Hôm nay</button>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-box" style="background:#fbbc04"></div><span>Cuối tuần</span></div>
+    <div class="legend-item"><div class="legend-box" style="background:#ea4335"></div><span>Chủ nhật</span></div>
+    <div class="legend-item"><div class="legend-box" style="background:#34a853"></div><span>Hôm nay</span></div>
+  </div>
+
+  <div class="stats-bar" id="statsBar"></div>
+
+  <div class="dept-list" id="deptList"></div>
+</div>
+
+<div class="bottom-nav">
+  <button class="nav-item active" data-nav="list"><span class="nav-icon">🏠</span><span>Danh sách</span></button>
+  <button class="nav-item" data-nav="today"><span class="nav-icon">📍</span><span>Hôm nay</span></button>
+  <button class="nav-item" data-nav="search"><span class="nav-icon">🔍</span><span>Tìm kiếm</span></button>
+  <button class="nav-item" data-nav="info"><span class="nav-icon">ℹ️</span><span>Thông tin</span></button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ============================================================
+// FULL DATA - Nhập đầy đủ từ file Excel
+// Format: "Tên|SĐT" - mỗi ngày là 1 mảng các chuỗi này
+// ============================================================
+
+const MONTH = 10, YEAR = 2026, DAYS = 31;
+const WEEKDAY = ['CN','T2','T3','T4','T5','T6','T7'];
+const TODAY = new Date();
+const IS_CUR = TODAY.getMonth() === MONTH-1 && TODAY.getFullYear() === YEAR;
+const TODAY_DATE = IS_CUR ? TODAY.getDate() : 17;
+
+const DATES = [];
+for (let d = 1; d <= DAYS; d++) {
+  const dt = new Date(YEAR, MONTH-1, d);
+  const dow = dt.getDay();
+  DATES.push({ day: d, weekday: WEEKDAY[dow], isWeekend: dow===0||dow===6, isSunday: dow===0 });
+}
+
+const DEPTS = [
+// ===================== 1. LÃNH ĐẠO =====================
+{id:1, name:"Lãnh đạo", phone:"", staff:[
+  ["Bs Đức|0912.333.242"],["Bs Huyền|0982.272.489"],["Bs Hương|0946.723.968"],["Bs Võ|0987.480.884"],
+  ["Bs Tạo|0912.668.345"],["Bs Huyền|0982.272.489"],["Bs Huấn|0979.767.769"],["Bs Hoàn|0983.069.291"],
+  ["Bs Võ|0987.480.884"],["Bs Huyền|0982.272.489"],["Bs Tạo|0912.668.345"],["Bs Hoàn|0983.069.291"],
+  ["Bs Hương|0946.723.968"],["Bs Huấn|0979.767.769"],["Bs Đức|0912.333.242"],["Bs Hiếu|0968.266.599"],
+  ["Bs Hương|0946.723.968"],["Bs Hoàn|0983.069.291"],["Bs Tạo|0912.668.345"],["Bs Võ|0987.480.884"],
+  ["Bs Huấn|0979.767.769"],["Bs Đức|0912.333.242"],["Bs Hiếu|0968.266.599"],["Bs Huyền|0982.272.489"],
+  ["Bs Võ|0987.480.884"],["Bs Tạo|0912.668.345"],["Bs Hương|0946.723.968"],["Bs Huấn|0979.767.769"],
+  ["Bs Đức|0912.333.242"],["Bs Hoàn|0983.069.291"],["Bs Hiếu|0968.266.599"]
+]},
+
+// ===================== 2. TỔNG ĐÀI =====================
+{id:2, name:"Tổng đài", phone:"0220.3 890 205", staff:[
+  ["Đoan|0788.391.899"],["Loan|0349.513.911"],["Hà|0356.856.965"],["Vinh|0779.237.285"],["Huyền|0793.375.888"],
+  ["Thu|0914.902.182"],["Nam|0354.297.264"],["Hà|0356.856.965"],["Vinh|0779.237.285"],["Thu|0914.902.182"],
+  ["Loan|0349.513.911"],["Đoan|0788.391.899"],["Huyền|0793.375.888"],["Vinh|0779.237.285"],["Nam|0354.297.264"],
+  ["Thu|0914.902.182"],["Huyền|0793.375.888"],["Đoan|0788.391.899"],["Nam|0354.297.264"],["Loan|0349.513.911"],
+  ["Hà|0356.856.965"],["Huyền|0793.375.888"],["Thu|0914.902.182"],["Vinh|0779.237.285"],["Nam|0354.297.264"],
+  ["Loan|0349.513.911"],["Đoan|0788.391.899"],["Nam|0354.297.264"],["Hà|0356.856.965"],["Vinh|0779.237.285"],
+  ["Thu|0914.902.182"]
+]},
+
+// ===================== 3. CNTT =====================
+{id:3, name:"CNTT", phone:"0220.3 891 816", staff:[
+  ["Đông|0914.180.118"],["Sơn|0829.674.389"],["Cường|0337.529.973"],["H.Anh|0936.106.400"],["Giáp|0976.600.001"],
+  ["Hiếu|0965.828.336"],["Hùng|0358.342.403"],["Cường|0337.529.973"],["H.Anh|0936.106.400"],["Hiếu|0965.828.336"],
+  ["Sơn|0829.674.389"],["Hùng|0358.342.403"],["Giáp|0976.600.001"],["Đông|0914.180.118"],["Hùng|0358.342.403"],
+  ["Sơn|0829.674.389"],["Đông|0914.180.118"],["Giáp|0976.600.001"],["Cường|0337.529.973"],["H.Anh|0936.106.400"],
+  ["Hiếu|0965.828.336"],["Giáp|0976.600.001"],["Đông|0914.180.118"],["Sơn|0829.674.389"],["Cường|0337.529.973"],
+  ["Hùng|0358.342.403"],["Đông|0914.180.118"],["Giáp|0976.600.001"],["H.Anh|0936.106.400"],["Hùng|0358.342.403"],
+  ["Hiếu|0965.828.336"]
+]},
+
+// ===================== 4. HCQT =====================
+{id:4, name:"HCQT", phone:"0220.3 899 006", staff:[
+  ["Tuấn|0987.688.110","Hường|0984.384.188","Hùng|0976.082.223","Linh|","Quân|"],
+  ["Đoan|0987.941.866","Thanh|0979.856.646","Dũng|0968.526.292","Minh|","Nhường|"],
+  ["Minh|0972.912.868","Hải|0987.894.926","Biên|0972.341.180","Hà|","Thắng|"],
+  ["Cường|0975.972.981","Hường|0984.384.188","Hùng|0976.082.223","Linh|","Quân|"],
+  ["Phước|0901.251.182","Thanh|0979.856.646","Dũng|0968.526.292","Minh|","Nhường|"],
+  ["Tuấn|0987.688.110","Hải|0987.894.926","Biên|0972.341.180","Hà|","Thắng|"],
+  ["Đoan|0987.941.866","Hường|0984.384.188","Hùng|0976.082.223","Linh|","Quân|"],
+  ["Minh|0972.912.868","Thanh|0979.856.646","Dũng|0968.526.292","Minh|","Nhường|"],
+  ["Cường|0975.972.981","Hải|0987.894.926","Biên|0972.341.180","Hà|","Thắng|"],
+  ["Phước|0901.251.182","Hường|0984.384.188","Hùng|0976.082.223","Linh|","Quân|"],
+  ["Tuấn|0987.688.110","Thanh|0979.856.646","Dũng|0968.526.292","Minh|","Nhường|"],
+  ["Đoan|0987.941.866","Hải|0987.894.926","Biên|0972.341.180","Hà|","Thắng|"],
+  ["Minh|0972.912.868","Hường|0984.384.188","Hùng|0976.082.223","Linh|","Quân|"],
+  ["Cường|0975.972.981","Thanh|0979.856.646","Dũng|0968.526.292","Minh|","Nhường|"],
+  ["Phước|0901.251.182","Hải|0987.894.926","Biên|0972.341.180","Hà|","Thắng|"],
+  ["Tuấn|0987.688.110","Hường|0984.384.188","Hùng|0976.082.223","Linh|","Quân|"],
+  ["Đoan|0987.941.866","Thanh|0979.856.646","Dũng|0968.526.292","Minh|","Nhường|"],
+  ["Minh|0972.912.868","Hải|0987.894.926","Biên|0972.341.180","Hà|","Thắng|"],
+  ["Cường|0975.972.981","Hường|0984.384.188","Hùng|0976.082.223","Linh|","Quân|"],
+  ["Phước|0901.251.182","Thanh|0979.856.646","Dũng|0968.526.292","Minh|","Nhường|"],
+  ["Tuấn|0987.688.110","Hải|0987.894.926","Biên|0972.341.180","Hà|","Thắng|"],
+  ["Đoan|0987.941.866","Hường|0984.384.188","Hùng|0976.082.223","Linh|","Quân|"],
+  ["Minh|0972.912.868","Thanh|0979.856.646","Dũng|0968.526.292","Minh|","Nhường|"],
+  ["Cường|0975.972.981","Hải|0987.894.926","Biên|0972.341.180","Hà|","Thắng|"],
+  ["Phước|0901.251.182","Hường|0984.384.188","Hùng|0976.082.223","Linh|","Quân|"],
+  ["Tuấn|0987.688.110","Thanh|0979.856.646","Dũng|0968.526.292","Minh|","Nhường|"],
+  ["Đoan|0987.941.866","Hải|0987.894.926","Biên|0972.341.180","Hà|","Thắng|"],
+  ["Minh|0972.912.868","Hường|0984.384.188","Hùng|0976.082.223","Linh|","Quân|"],
+  ["Cường|0975.972.981","Thanh|0979.856.646","Dũng|0968.526.292","Minh|","Nhường|"],
+  ["Phước|0901.251.182","Hải|0987.894.926","Biên|0972.341.180","Hà|","Thắng|"],
+  ["Tuấn|0987.688.110","Hường|0984.384.188","Hùng|0976.082.223","Linh|","Quân|"]
+]},
+
+// ===================== 5. VẬT TƯ TBYT =====================
+{id:5, name:"Vật tư TBYT", phone:"0220.3 892 213", staff:[
+  ["Trang|0866.961.119"],["Hằng|0349.292.620"],["Tuấn|0989.406.974"],["Dung|0357.137.914"],["Thắm|0904.379.003"],
+  ["Huệ|0388.990.989"],["Quân|0946.036.288"],["Đ.T.T.Thủy|0936.617.836"],["Ngọc|0945.666.211"],["Vũ T.Thu Hà|0366.982.995"],
+  ["Thu Hà|0984.723.335"],["Vân Hương|0914.066.928"],["Vân|0978.968.059"],["Dũng|0969.301.186"],["Tuấn|0989.406.974"],
+  ["Đ.T.T.Thủy|0936.617.836"],["Hải|0983.918.838"],["Huệ|0388.990.989"],["Dung|0357.137.914"],["Quân|0946.036.288"],
+  ["Hằng|0349.292.620"],["Ngọc|0945.666.211"],["Trang|0866.961.119"],["Ph. Huyền|0384.511.965"],["Vân Hương|0914.066.928"],
+  ["Thu Hà|0984.723.335"],["Thắm|0904.379.003"],["Dũng|0969.301.186"],["V. Huyền|0369.563.966"],["Vân|0978.968.059"],
+  ["Th. Huyền|0943.108.868"]
+]},
+
+// ===================== 6. TCKT =====================
+{id:6, name:"TCKT", phone:"0220.3 899 004", staff:[
+  ["Thanh Mai|0964.835.526","Bùi Tươi|0963.489.255"],
+  ["Ngọc Bích|0353.268.292","Minh Thảo|0989.083.027"],
+  ["Bùi Thúy|0913.050.859","Diệp|0982.668.959"],
+  ["Hùng Cường|0982.981.995","Vân Ngọc|0782.050.406"],
+  ["Nghiêm Thuỷ|0961.526.794","Khánh Huyền|0867.897.927"],
+  ["Phương Mai|0373.351.959","Vân Anh|0333.102.002"],
+  ["Quang|0818.032.002","Đỗ Dương|0913.570.955"],
+  ["Điệp|0372.644.250","Hạnh Ngọc|0918.611.990"],
+  ["Liệu|0389.158.970","Thanh Mai|0964.835.526"],
+  ["Thuỳ Dương|0969.229.616","Nguyễn Hà|0983.296.885"],
+  ["M. Trang|0375.437.946","Trần Hà|0912.687.263"],
+  ["Bùi Tươi|0963.489.255","Nguyễn Trang|0383.455.642"],
+  ["Trang 97|0339.423.307","Giang|0981.705.530"],
+  ["Trang 96|0963.615.916","Ng. Thảo|0965.989.050"],
+  ["Ng Huyền|0982.478.629","Nghiêm Thuỷ|0961.526.794"],
+  ["Q. Trang|0867.810.989","Bùi Thúy|0913.050.859"],
+  ["Minh Thảo|0989.083.027","T. Phương|0971.521.819"],
+  ["Hồng|0972.345.110","Vũ Hảo|0983.798.963"],
+  ["Ng Huyền|0982.478.629","Thuỳ Dương|0969.229.616"],
+  ["Hạnh Ngọc|0918.611.990","M. Trang|0375.437.946"],
+  ["Vân Anh|0333.102.002","Vũ Thảo|0906.912.885"],
+  ["Trần Hà|0912.687.263","Liệu|0389.158.970"],
+  ["Ng. Thảo|0965.989.050","Phương Mai|0373.351.959"],
+  ["Ngọc Bích|0353.268.292","Hương Thảo|0943.883.808"],
+  ["Ngân Hà|0866.848.134","Q. Trang|0867.810.989"],
+  ["Nguyễn Trang|0383.455.642","Trang 96|0963.615.916"],
+  ["Ngọc Linh|0386.483.167","Trang 97|0339.423.307"],
+  ["T. Phương|0971.521.819","Điệp|0372.644.250"],
+  ["Giang|0981.705.530","Quang|0818.032.002"],
+  ["Vũ Thảo|0906.912.885","Ng Huyền|0982.478.629"],
+  ["Ng. Thúy|0986.618.562","Linh Chi|0362.122.132"]
+]},
+
+// ===================== 7. CẤP CỨU =====================
+{id:7, name:"Cấp cứu", phone:"0220.3 899 115", staff:[
+  ["Bs Nhu|0366.926.998","Bs Đăng KTN|","Bs Ngoại 4|","Bs Hậu|","Bs Minh|0971.606.686"],
+  ["Bs Tú|0971.526.023","Bs UB|","Bs Thắng|","Bs Mạnh|","Bs Nhu|0366.926.998"],
+  ["Bs Bình|0348.891.625","Bs Huyền|","Bs Ngoại 1|","Bs Phượng|","Bs Tú|0971.526.023"],
+  ["Bs Minh|0971.606.686","Bs GMHS|","Bs Tiến G2|","Bs Hường|","Bs Nhu|0366.926.998"],
+  ["Bs Dương|0969.773.688","Bs Đăng KTN|","Bs Ngoại 3|","Bs Hậu|","Bs Minh|0971.606.686"],
+  ["Bs Nhu|0366.926.998","Bs Nam TTTM|","Bs Ngoại 4|","Bs Mạnh|","Bs Tú|0971.526.023"],
+  ["Bs Tú|0971.526.023","Bs UB|","Bs Thắng|","Bs Phượng|","Bs Nhu|0366.926.998"],
+  ["Bs Bình|0348.891.625","Bs Huyền|","Bs Ngoại 1|","Bs Hường|","Bs Minh|0971.606.686"],
+  ["Bs Minh|0971.606.686","Bs Hương KB|","Bs Tùng G2|","Bs Hậu|","Bs Tú|0971.526.023"],
+  ["Bs Nhu|0366.926.998","Bs Dương(Nhi)|","Bs Ngoại 3|","Bs Mạnh|","Bs Minh|0971.606.686"],
+  ["Bs Tú|0971.526.023","Bs UB|","Bs Ngoại 4|","Bs Phượng|","Bs Nhu|0366.926.998"],
+  ["Bs Bình|0348.891.625","Bs GMHS|","Bs Thắng|","Bs Hậu|","Bs Tú|0971.526.023"],
+  ["Bs Minh|0971.606.686","Bs Nam TTTM|","Bs Ngoại 1|","Bs Hường|","Bs Nhu|0366.926.998"],
+  ["Bs Dương|0969.773.688","Bs Huyền|","Bs T.AnhC G2|","Bs Mạnh|","Bs Minh|0971.606.686"],
+  ["Bs Nhu|0366.926.998","Bs Đăng KTN|","Bs Ngoại 3|","Bs Phượng|","Bs Tú|0971.526.023"],
+  ["Bs Tú|0971.526.023","Bs UB|","Bs Ngoại 4|","Bs Hậu|","Bs Minh|0971.606.686"],
+  ["Bs Bình|0348.891.625","Bs GMHS|","Bs Thắng|","Bs Mạnh|","Bs Nhu|0366.926.998"],
+  ["Bs Minh|0971.606.686","Bs Huyền|","Bs Ngoại 1|","Bs Hường|","Bs Tú|0971.526.023"],
+  ["Bs Dương|0969.773.688","Bs Lão khoa|","Bs T.AnhC G2|","Bs Hậu|","Bs Minh|0971.606.686"],
+  ["Bs Nhu|0366.926.998","Bs Nam TTTM|","Bs Ngoại 3|","Bs Phượng|","Bs Tú|0971.526.023"],
+  ["Bs Tú|0971.526.023","Bs GMHS|","Bs Ngoại 4|","Bs Huyền|","Bs Nhu|0366.926.998"],
+  ["Bs Bình|0348.891.625","Bs Đăng KTN|","Bs Thắng|","Bs Hường|","Bs Minh|0971.606.686"],
+  ["Bs Minh|0971.606.686","Bs Hương KB|","Bs Ngoại 1|","Bs Mạnh|","Bs Nhu|0366.926.998"],
+  ["Bs Dương|0969.773.688","Bs UB|","Bs Tiến G2|","Bs Hậu|","Bs Tú|0971.526.023"],
+  ["Bs Tú|0971.526.023","Bs Huyền|","Bs Ngoại 3|","Bs Phượng|","Bs Minh|0971.606.686"],
+  ["Bs Nhu|0366.926.998","Bs Đăng KTN|","Bs Ngoại 4|","Bs Hường|","Bs Tú|0971.526.023"],
+  ["Bs Minh|0971.606.686","Bs Nam TTTM|","Bs Thắng|","Bs Hậu|","Bs Nhu|0366.926.998"],
+  ["Bs Dương|0969.773.688","Bs Lão khoa|","Bs Ngoại 1|","Bs Phượng|","Bs Minh|0971.606.686"],
+  ["Bs Tú|0971.526.023","Bs GMHS|","Bs T.AnhC G2|","Bs Huyền|","Bs Tú|0971.526.023"],
+  ["Bs Minh|0971.606.686","Bs Dương(Nhi)|","Bs Ngoại 3|","Bs Mạnh|","Bs Nhu|0366.926.998"],
+  ["Bs Nhu|0366.926.998","Bs Lão khoa|","Bs Ngoại 4|","Bs Hường|","Bs Minh|0971.606.686"]
+],
+extraRow: [
+  ["Bs Minh|0971.606.686"],["Bs Nhu|0366.926.998"],["Bs Tú|0971.526.023"],["Bs Nhu|0366.926.998"],
+  ["Bs Minh|0971.606.686"],["Bs Tú|0971.526.023"],["Bs Nhu|0366.926.998"],["Bs Minh|0971.606.686"],
+  ["Bs Tú|0971.526.023"],["Bs Minh|0971.606.686"],["Bs Nhu|0366.926.998"],["Bs Tú|0971.526.023"],
+  ["Bs Nhu|0366.926.998"],["Bs Minh|0971.606.686"],["Bs Tú|0971.526.023"],["Bs Minh|0971.606.686"],
+  ["Bs Nhu|0366.926.998"],["Bs Tú|0971.526.023"],["Bs Minh|0971.606.686"],["Bs Tú|0971.526.023"],
+  ["Bs Nhu|0366.926.998"],["Bs Minh|0971.606.686"],["Bs Nhu|0366.926.998"],["Bs Tú|0971.526.023"],
+  ["Bs Minh|0971.606.686"],["Bs Nhu|0366.926.998"],["Bs Tú|0971.526.023"],["Bs Minh|0971.606.686"],
+  ["Bs Tú|0971.526.023"],["Bs Nhu|0366.926.998"],["Bs Minh|0971.606.686"]
+], extraLabel: "Thường trú"},
+
+// ===================== 8. HSTC - CĐ =====================
+{id:8, name:"HSTC - CĐ", phone:"0220.3 895 193", staff:[
+  ["Bs Sơn|0979.373.426"],["Bs Khánh|0395.309.806"],["Bs Lý|0919.969.332"],["Bs Sơn|0979.373.426"],
+  ["Bs Tuấn Anh|0962.007.663"],["Bs Hoàn|0983.069.291"],["Bs Lý|0919.969.332"],["Bs Hoàn|0983.069.291"],
+  ["Bs Khánh|0395.309.806"],["Bs Tuấn Anh|0962.007.663"],["Bs Sơn|0979.373.426"],["Bs Hoàn|0983.069.291"],
+  ["Bs Lý|0919.969.332"],["Bs Khánh|0395.309.806"],["Bs Hoàn|0983.069.291"],["Bs Lý|0919.969.332"],
+  ["Bs Sơn|0979.373.426"],["Bs Tuấn Anh|0962.007.663"],["Bs Khánh|0395.309.806"],["Bs Lý|0919.969.332"],
+  ["Bs Hoàn|0983.069.291"],["Bs Khánh|0395.309.806"],["Bs Lý|0919.969.332"],["Bs Tuấn Anh|0962.007.663"],
+  ["Bs Sơn|0979.373.426"],["Bs Hoàn|0983.069.291"],["Bs Khánh|0395.309.806"],["Bs Lý|0919.969.332"],
+  ["Bs Khánh|0395.309.806"],["Bs Hoàn|0983.069.291"],["Bs Sơn|0979.373.426"]
+]},
+
+// ===================== 9. PTGM =====================
+{id:9, name:"PTGM", phone:"0220.3 899 042", staff:[
+  ["Bs Hiếu|0902.043.628"],["Bs Huyền|0982.272.489"],["Bs Ân|0977.077.445"],["Bs Nghĩa|0988.424.893"],["Bs Phong|0912.610.603"],
+  ["Bs Hiếu|0902.043.628"],["Bs Huyền|0982.272.489"],["Bs Ân|0977.077.445"],["Bs Nghĩa|0988.424.893"],["Bs Phong|0912.610.603"],
+  ["Bs Hiếu|0902.043.628"],["Bs Huyền|0982.272.489"],["Bs Nghĩa|0988.424.893"],["Bs Phong|0912.610.603"],["Bs Hiếu|0902.043.628"],
+  ["Bs Huyền|0982.272.489"],["Bs Ân|0977.077.445"],["Bs Nghĩa|0988.424.893"],["Bs Phong|0912.610.603"],["Bs Hiếu|0902.043.628"],
+  ["Bs Huyền|0982.272.489"],["Bs Ân|0977.077.445"],["Bs Nghĩa|0988.424.893"],["Bs Phong|0912.610.603"],["Bs Huyền|0982.272.489"],
+  ["Bs Hiếu|0902.043.628"],["Bs Nghĩa|0988.424.893"],["Bs Huyền|0982.272.489"],["Bs Phong|0912.610.603"],["Bs Hiếu|0902.043.628"],
+  ["Bs Ân|0977.077.445"]
+],
+extraRow: [
+  ["Bs Nghĩa|0988.424.893"],["Bs Phong|0912.610.603"],["Bs Hiếu|0902.043.628"],["Bs Huyền|0982.272.489"],
+  ["Bs Nghĩa|0988.424.893"],["Bs Huyền|0982.272.489"],["Bs Hiếu|0902.043.628"],["Bs Phong|0912.610.603"],
+  ["Bs Hiếu|0902.043.628"],["Bs Huyền|0982.272.489"],["Bs Nghĩa|0988.424.893"],["Bs Phong|0912.610.603"],
+  ["Bs Hiếu|0902.043.628"],["Bs Huyền|0982.272.489"],["Bs Nghĩa|0988.424.893"],["Bs Phong|0912.610.603"],
+  ["Bs Hiếu|0902.043.628"],["Bs Huyền|0982.272.489"],["Bs Nghĩa|0988.424.893"],["Bs Phong|0912.610.603"],
+  ["Bs Hiếu|0902.043.628"],["Bs Huyền|0982.272.489"],["Bs Phong|0912.610.603"],["Bs Nghĩa|0988.424.893"],
+  ["Bs Ân|0977.077.445"],["Bs Phong|0912.610.603"],["Bs Huyền|0982.272.489"],["Bs Hiếu|0902.043.628"],
+  ["Bs Nghĩa|0988.424.893"],["Bs Huyền|0982.272.489"],["Bs Phong|0912.610.603"]
+], extraLabel: "Thường trú"},
+
+// ===================== 10. HSTC NGOẠI =====================
+{id:10, name:"HSTC Ngoại", phone:"0220.3 895 005", staff:[
+  ["Bs Oanh|0358.978.923"],["Bs Dương|0973.912.145"],["Bs Phượng|0936.950.005"],["Bs Oanh|0358.978.923"],
+  ["Bs Trường|0393.296.316"],["Bs Dương|0973.912.145"],["Bs Phượng|0936.950.005"],["Bs Oanh|0358.978.923"],
+  ["Bs Trường|0393.296.316"],["Bs Dương|0973.912.145"],["Bs Trường|0393.296.316"],["Bs Oanh|0358.978.923"],
+  ["Bs Phượng|0936.950.005"],["Bs Trường|0393.296.316"],["Bs Dương|0973.912.145"],["Bs Oanh|0358.978.923"],
+  ["Bs Phượng|0936.950.005"],["Bs Dương|0973.912.145"],["Bs Phượng|0936.950.005"],["Bs Oanh|0358.978.923"],
+  ["Bs Dương|0973.912.145"],["Bs Trường|0393.296.316"],["Bs Phượng|0936.950.005"],["Bs Trường|0393.296.316"],
+  ["Bs Oanh|0358.978.923"],["Bs Dương|0973.912.145"],["Bs Phượng|0936.950.005"],["Bs Oanh|0358.978.923"],
+  ["Bs Phượng|0936.950.005"],["Bs Dương|0973.912.145"],["Bs Trường|0393.296.316"]
+]},
+
+// ===================== 11. NGOẠI 1 =====================
+{id:11, name:"Ngoại 1", phone:"0220.3 899 033", staff:[
+  ["Bs Hiển|0915.091.869","Tạo|","Hà|"],
+  ["Bs Hiếu|0336.444.488","Đăng|"],
+  ["Bs Vân|0977.559.988","Nam|","Võ|"],
+  ["Bs Tạo|0912.912.898","Tuấn|","Giang|"],
+  ["Bs Đăng|0974.374.574","Hoàng|","Quang|"],
+  ["Bs Phúc|0914.881.477","Hiếu|","Võ|"],
+  ["Bs Vân|0977.559.988","Tuấn|","Hà|"],
+  ["Bs Thành|0915.634.455","Hoàng|","Quang|"],
+  ["Bs Hiển|0915.091.869","Tạo|","Võ|"],
+  ["Bs Đăng|0974.374.574","Tuấn|","Hà|"],
+  ["Bs Phúc|0914.881.477","Giang|","Nam|"],
+  ["Bs Vân|0977.559.988","Võ|","Hoàng|"],
+  ["Bs Thành|0915.634.455","Đăng|","Quang|"],
+  ["Bs Tạo|0912.912.898","Hiếu|","Hà|"],
+  ["Bs Phúc|0914.881.477","Hoàng|","Võ|"],
+  ["Bs Hiển|0915.091.869","Tuấn|","Quang|"],
+  ["Bs Tạo|0912.912.898","Giang|"],
+  ["Bs Hiếu|0336.444.488","Nam|","Võ|"],
+  ["Bs Vân|0977.559.988","Tuấn|","Quang|"],
+  ["Bs Phúc|0914.881.477","Đăng|","Hà|"],
+  ["Bs Tạo|0912.912.898","Hiếu|","Võ|"],
+  ["Bs Thành|0915.634.455","Hoàng|","Quang|"],
+  ["Bs Hiển|0915.091.869","Tuấn|","Hà|"],
+  ["Bs Vân|0977.559.988","Nam|","Võ|"],
+  ["Bs Thành|0915.634.455","Giang|","Quang|"],
+  ["Bs Hiếu|0336.444.488","Đăng|","Hà|"],
+  ["Bs Tạo|0912.912.898","Tuấn|","Võ|"],
+  ["Bs Phúc|0914.881.477","Hoàng|","Quang|"],
+  ["Bs Vân|0977.559.988"],
+  ["Bs Hiển|0915.091.869","Quang|"],
+  ["Bs Đăng|0974.374.574","Giang|","Nam|"]
+]},
+
+// ===================== 12. NGOẠI 2 =====================
+{id:12, name:"Ngoại 2", phone:"0220.3 899 034", staff:[
+  ["Bs T.Anh A|0904.653.102","Huy B|"],
+  ["Bs Tùng|0388.239.668","Tú|","Quang|"],
+  ["Bs Huy|0904.467.009","T.Anh C|"],
+  ["Bs Việt|0984.411.044","Huy B|","Khánh|"],
+  ["Bs T.Anh B|0981.707.797","Quang|"],
+  ["Bs Tùng|0388.239.668","T.Anh C|"],
+  ["Bs T.Anh A|0904.653.102","Tiến|"],
+  ["Bs T.Anh B|0981.707.797","Huy B|","Khánh|"],
+  ["Bs T.Anh A|0904.653.102","T.Anh C|"],
+  ["Bs Huy|0904.467.009","Tú|","Quang|"],
+  ["Bs Việt|0984.411.044","Tiến|","Huy B|"],
+  ["Bs T.Anh B|0981.707.797","T.Anh C|","Khánh|"],
+  ["Bs Tùng|0388.239.668","Quang|"],
+  ["Bs T.Anh A|0904.653.102","Huy B|"],
+  ["Bs T.Anh B|0981.707.797","Khánh|"],
+  ["Bs Việt|0984.411.044","Tú|","Huy B|"],
+  ["Bs Huy|0904.467.009","Quang|","Khánh|"],
+  ["Bs T.Anh A|0904.653.102","Tiến|"],
+  ["Bs Tùng|0388.239.668","Khánh|"],
+  ["Bs Việt|0984.411.044","Tú|","Quang|"],
+  ["Bs T.Anh A|0904.653.102","Huy B|"],
+  ["Bs Tùng|0388.239.668"],
+  ["Bs Việt|0984.411.044","T.Anh C|"],
+  ["Bs Huy|0904.467.009","Huy B|"],
+  ["Bs T.Anh B|0981.707.797","Quang|"],
+  ["Bs T.Anh A|0904.653.102","Tú|","Khánh|"],
+  ["Bs Tùng|0388.239.668","T.Anh C|"],
+  ["Bs Việt|0984.411.044","Quang|"],
+  ["Bs T.Anh B|0981.707.797"],
+  ["Bs Tùng|0388.239.668","Quang|"],
+  ["Bs Huy|0904.467.009","Khánh|","Huy B|"]
+],
+extraRow: [
+  ["Bs Hiếu|0968.266.599"],["Bs Hiếu|0968.266.599"],["Bs Hiếu|0968.266.599"],["Bs Hiếu|0968.266.599"],
+  ["Bs Hiếu|0968.266.599"],["Bs Hiếu|0968.266.599"],["Bs Hiếu|0968.266.599"],["Bs Hiếu|0968.266.599"],
+  ["Bs Hiếu|0968.266.599"],["Bs Hiếu|0968.266.599"],["Bs Hiếu|0968.266.599"],["Bs Hiếu|0968.266.599"],
+  ["Bs Hiếu|0968.266.599"],["Bs Hiếu|0968.266.599"],["Bs Hiếu|0968.266.599"],["Bs Hiếu|0968.266.599"],
+  ["Bs Hiếu|0968.266.599"],["Bs Hiếu|0968.266.599"],["Bs Hiếu|0968.266.599"],["Bs Hiếu|0968.266.599"],
+  ["Bs Hiếu|0968.266.599"],["Bs Hiếu|0968.266.599"],["Bs Hiếu|0968.266.599"],["Bs Hiếu|0968.266.599"],
+  ["Bs Hiếu|0968.266.599"],["Bs Hiếu|0968.266.599"],["Bs Hiếu|0968.266.599"],["Bs Hiếu|0968.266.599"],
+  ["Bs Hiếu|0968.266.599"],["Bs Hiếu|0968.266.599"],["Bs Hiếu|0968.266.599"]
+], extraLabel: "Thường trú"},
+
+// ===================== 13. NGOẠI 3 =====================
+{id:13, name:"Ngoại 3", phone:"0220.3 899 035", staff:[
+  ["Bs Hiển|0934.236.103","Hoàng|","Huy|"],
+  ["Bs Nguyên|0976.649.845","Tuấn|","Điệp|"],
+  ["Bs Vinh|0982.682.688","Dũng|","Khánh|"],
+  ["Bs Hiển|0934.236.103","Hiếu|","Thắng|"],
+  ["Bs Nguyên|0976.649.845","Hoàng|","Dương|"],
+  ["Bs Vinh|0982.682.688","Tuấn|","Khánh|"],
+  ["Bs Hiển|0934.236.103","Dũng|","Huy|"],
+  ["Bs Nguyên|0976.649.845","Hiếu|","Dương|"],
+  ["Bs Vinh|0982.682.688","Tuấn|","Khánh|"],
+  ["Bs Hiển|0934.236.103","Dũng|","Huy|"],
+  ["Bs Nguyên|0976.649.845","Thắng|","Dương|"],
+  ["Bs Vinh|0982.682.688","Hiếu|","Khánh|"],
+  ["Bs Hoàng|0904.334.686","Dũng|","Nam|"],
+  ["Bs Hiển|0934.236.103","Tuấn|","Huy|"],
+  ["Bs Nguyên|0976.649.845","Hiếu|","Dương|"],
+  ["Bs Vinh|0982.682.688","Hoàng|","Nam|"],
+  ["Bs Hiển|0934.236.103","Dũng|","Huy|"],
+  ["Bs Nguyên|0976.649.845","Tuấn|","Dương|"],
+  ["Bs Vinh|0982.682.688","Hoàng|","Khánh|"],
+  ["Bs Hiển|0934.236.103","Hiếu|","Huy|"],
+  ["Bs Nguyên|0976.649.845","Tuấn|","Dương|"],
+  ["Bs Vinh|0982.682.688","Hoàng|","Khánh|"],
+  ["Bs Hiển|0934.236.103","Dũng|","Huy|"],
+  ["Bs Hiếu|0981.985.666","Tuấn|","Thắng|"],
+  ["Bs Nguyên|0976.649.845","Hoàng|","Khánh|"],
+  ["Bs Vinh|0982.682.688","Dũng|","Nam|"],
+  ["Bs Hiển|0934.236.103","Tuấn|","Huy|"],
+  ["Bs Nguyên|0976.649.845","Hiếu|","Dương|"],
+  ["Bs Vinh|0982.682.688","Hoàng|","Khánh|"],
+  ["Bs Hiển|0934.236.103","Dũng|","Huy|"],
+  ["Bs Nguyên|0976.649.845","Hiếu|","Dương|"]
+]},
+
+// ===================== 14. NGOẠI 4 =====================
+{id:14, name:"Ngoại 4", phone:"0220.3 899 036", staff:[
+  ["Bs Vịnh|0982.181.808"],["Bs Linh|0975.644.356"],["Bs Vũ|0968.622.135"],["Bs Trung|0978.533.843"],["Bs Hùng|0904.376.345"],
+  ["Bs Ủy|0983.483.516"],["Bs Vịnh|0982.181.808"],["Bs Trung|0978.533.843"],["Bs Hùng|0904.376.345"],["Bs Vũ|0968.622.135"],
+  ["Bs Ủy|0983.483.516"],["Bs Trung|0978.533.843"],["Bs Vũ|0968.622.135"],["Bs Vịnh|0982.181.808"],["Bs Hùng|0904.376.345"],
+  ["Bs Ủy|0983.483.516"],["Bs Vịnh|0982.181.808"],["Bs Hùng|0904.376.345"],["Bs Linh|0975.644.356"],["Bs Trung|0978.533.843"],
+  ["Bs Vịnh|0982.181.808"],["Bs Ủy|0983.483.516"],["Bs Hùng|0904.376.345"],["Bs Vịnh|0982.181.808"],["Bs Linh|0975.644.356"],
+  ["Bs Trung|0978.533.843"],["Bs Ủy|0983.483.516"],["Bs Hùng|0904.376.345"],["Bs Linh|0975.644.356"],["Bs Vũ|0968.622.135"],
+  ["Bs Trung|0978.533.843"]
+]},
+
+// ===================== 15. TT UNG BƯỚU =====================
+{id:15, name:"TT Ung Bướu", phone:"0220.3 899 040", staff:[
+  ["Bs Phương|0913.848.683","Bình|"],["Bs Hương|0946.723.968","Cường|"],["Bs Long|0912.636.514","Đức|"],
+  ["Bs Thanh|0979.803.251","Văn|"],["Bs Yến|0964.585.914","Bình|"],["Bs Doan|0974.427.288","Cường|"],
+  ["Bs Nga|0359.148.711","Văn|"],["Bs Quyền|0378.711.536","Bình|"],["Bs Thanh|0979.803.251","Huy|"],
+  ["Bs Doan|0974.427.288","Văn|"],["Bs Phương|0913.848.683","Bình|"],["Bs Yến|0964.585.914","Đức|"],
+  ["Bs Nga|0359.148.711","Văn|"],["Bs Thanh|0979.803.251","Huyền|"],["Bs Phương|0913.848.683","Bình|"],
+  ["Bs Doan|0974.427.288","Văn|"],["Bs Hương|0946.723.968","Huy|"],["Bs Quyền|0378.711.536","Đức|"],
+  ["Bs Thanh|0979.803.251","Bình|"],["Bs Phương|0913.848.683","Cường|"],["Bs Nga|0359.148.711","Văn|"],
+  ["Bs Thanh|0979.803.251","Bình|"],["Bs Quyền|0378.711.536","Đức|"],["Bs Phương|0913.848.683","Cường|"],
+  ["Bs Thanh|0979.803.251","Bình|"],["Bs Doan|0974.427.288","Huy|"],["Bs Yến|0964.585.914","Đức|"],
+  ["Bs Nga|0359.148.711","Văn|"],["Bs Doan|0974.427.288","Huy|"],["Bs Long|0912.636.514","Đức|"],
+  ["Bs Yến|0964.585.914","Cường|"]
+]},
+
+// ===================== 16. HM - PTTM =====================
+{id:16, name:"HM - PTTM", phone:"0220.3 899 038", staff:[
+  ["Bs Khởi|0989.995.936","Quang|"],["Bs Hoàng|0961.569.495"],["Bs Khởi|0989.995.936","Quang|"],["Bs Hoàng|0961.569.495"],
+  ["Bs Thúy|0397.565.589"],["Bs Khởi|0989.995.936","Quang|"],["Bs Hoàng|0961.569.495"],["Bs Thúy|0397.565.589"],
+  ["Bs Khởi|0989.995.936"],["Bs Hoàng|0961.569.495"],["Bs Khởi|0989.995.936","Quang|"],["Bs Hoàng|0961.569.495"],
+  ["Bs Thúy|0397.565.589"],["Bs Khởi|0989.995.936","Quang|"],["Bs Hoàng|0961.569.495"],["Bs Khởi|0989.995.936"],
+  ["Bs Thúy|0397.565.589"],["Bs Khởi|0989.995.936","Quang|"],["Bs Thúy|0397.565.589"],["Bs Khởi|0989.995.936","Quang|"],
+  ["Bs Thúy|0397.565.589"],["Bs Khởi|0989.995.936"],["Bs Thúy|0397.565.589"],["Bs Khởi|0989.995.936","Quang|"],
+  ["Bs Thúy|0397.565.589"],["Bs Khởi|0989.995.936"],["Bs Thúy|0397.565.589"],["Bs Hoàng|0961.569.495"],
+  ["Bs Khởi|0989.995.936","Quang|"],["Bs Thúy|0397.565.589"],["Bs Hoàng|0961.569.495"]
+]},
+
+// ===================== 17. TAI MŨI HỌNG =====================
+{id:17, name:"Tai Mũi Họng", phone:"0220.3 899 037", staff:[
+  ["Bs Xen|0981.921.559","Lâm|"],["Bs Dân|0903.476.376","Ngà|"],["Bs Hà|0988.310.787","Thanh|"],
+  ["Bs Nguyên|0974.263.248","Thành|"],["Bs Nghĩa|0989.372.618"],["Bs Xen|0981.921.559","Ngọc|"],
+  ["Bs Hà|0988.310.787","Lâm|"],["Bs Nguyên|0974.263.248","Thành|"],["Bs Nghĩa|0989.372.618","Thanh|"],
+  ["Bs Xen|0981.921.559","Lâm|"],["Bs Dân|0903.476.376","Ngọc|"],["Bs Hà|0988.310.787","Thành|"],
+  ["Bs Nguyên|0974.263.248","Lâm|"],["Bs Nghĩa|0989.372.618"],["Bs Xen|0981.921.559","Ngọc|"],
+  ["Bs Hà|0988.310.787"],["Bs Nguyên|0974.263.248","Ngà|"],["Bs Nghĩa|0989.372.618","Thanh|"],
+  ["Bs Xen|0981.921.559","Thành|"],["Bs Dân|0903.476.376","Ngọc|"],["Bs Hà|0988.310.787","Lâm|"],
+  ["Bs Nghĩa|0989.372.618"],["Bs Nguyên|0974.263.248","Thành|"],["Bs Xen|0981.921.559","Thành|"],
+  ["Bs Hà|0988.310.787","Ngọc|"],["Bs Nguyên|0974.263.248"],["Bs Nghĩa|0989.372.618"],["Bs Xen|0981.921.559"],
+  ["Bs Nguyên|0974.263.248"],["Bs Hà|0988.310.787","Thành|"],["Bs Nghĩa|0989.372.618","Ngọc|"]
+]},
+
+// ===================== 18. MẮT =====================
+{id:18, name:"Mắt", phone:"0220.3 899 039", staff:[
+  ["Làn|0389.988.124"],["Vinh|0937.268.568"],["Bs Dương|0944.431.868"],["Hoa|0812.936.888"],
+  ["Minh|0947.467.555"],["Hường A|0982.840.496"],["Bs Dương|0944.431.868"],["Yến|0936.565.899"],
+  ["Minh|0947.467.555"],["Bs Ly|0973.359.018"],["Làn|0389.988.124"],["Tâm|0936.706.289"],
+  ["Hường B|0936.518.538"],["Hoa|0812.936.888"],["Bs Dương|0944.431.868"],["Hường A|0982.840.496"],
+  ["Bs C.Anh|0936.261.929"],["Tâm|0936.706.289"],["Hường B|0936.518.538"],["Làn|0389.988.124"],
+  ["Bs Ly|0973.359.018"],["Hường A|0982.840.496"],["Bs Dương|0944.431.868"],["Vinh|0937.268.568"],
+  ["Hường B|0936.518.538"],["Hoa|0812.936.888"],["Bs Ly|0973.359.018"],["Bs C.Anh|0936.261.929"],
+  ["Hường A|0982.840.496"],["Tâm|0936.706.289"],["Minh|0947.467.555"]
+],
+extraRow: [
+  [],[],["Thuỷ|"],[],[],[],["Dung|"],[],[],[],[],[],["Dung|"],[],[],[],["Linh|"],[],[],[],[],[],[],["Dung|"],[],[],[],[],["Linh|"],[],[],[]
+], extraLabel: "Trực phụ"},
+
+// ===================== 19. NỘI 2 =====================
+{id:19, name:"Nội 2", phone:"0220.3 899 023", staff:[
+  ["Bs Hảo|0968.156.248"],["Bs Ngà|0981.766.735"],["Bs Ngân|0974.678.695"],["Bs Trang|0984.512.407"],
+  ["Bs Quý|0904.519.185"],["Bs Thủy|0982.535.028"],["Bs Hảo|0968.156.248"],["Bs Trang|0984.512.407"],
+  ["Bs Ngà|0981.766.735"],["Bs Ngân|0974.678.695"],["Bs Thủy|0982.535.028"],["Bs Trang|0984.512.407"],
+  ["Bs Hảo|0968.156.248"],["Bs Quý|0904.519.185"],["Bs Thủy|0982.535.028"],["Bs Trang|0984.512.407"],
+  ["Bs Ngà|0981.766.735"],["Bs Hảo|0968.156.248"],["Bs Quý|0904.519.185"],["Bs Trang|0984.512.407"],
+  ["Bs Thủy|0982.535.028"],["Bs Hảo|0968.156.248"],["Bs Ngân|0974.678.695"],["Bs Quý|0904.519.185"],
+  ["Bs Trang|0978.073.771"],["Bs Thủy|0982.535.028"],["Bs Hảo|0968.156.248"],["Bs Trang|0978.073.771"],
+  ["Bs Quý|0904.519.185"],["Bs Thủy|0982.535.028"],["Bs Ngà|0981.766.735"]
+]},
+
+// ===================== 20. TT TIM MẠCH =====================
+{id:20, name:"TT Tim Mạch", phone:"0220.3 899 024", staff:[
+  ["Bs Thắng|0969.901.705"],["Bs Thúy|0984.090.819"],["Bs Nghinh|0923.932.359"],["Bs Nguyệt|0968.302.383"],
+  ["Bs Cường|0985.781.050"],["Bs Duy|0833.856.662"],["Bs Thủy|0967.052.757"],["Bs Thắng|0969.901.705"],
+  ["Bs Bình|0395.833.689"],["Bs Cường|0985.781.050"],["Bs Thúy|0984.090.819"],["Bs Thưởng|0839.888.897"],
+  ["Bs Phương|0375.232.015"],["Bs Thắng|0969.901.705"],["Bs Bình|0395.833.689"],["Bs Cường|0985.781.050"],
+  ["Bs Duy|0833.856.662"],["Bs Thủy|0967.052.757"],["Bs Thưởng|0839.888.897"],["Bs Phương|0375.232.015"],
+  ["Bs Thúy|0984.090.819"],["Bs Thắng|0969.901.705"],["Bs Bình|0395.833.689"],["Bs Nguyệt|0968.302.383"],
+  ["Bs Phương|0375.232.015"],["Bs Cường|0985.781.050"],["Bs Thủy|0967.052.757"],["Bs Thưởng|0839.888.897"],
+  ["Bs Thúy|0984.090.819"],["Bs Phương|0375.232.015"],["Bs Nghinh|0923.932.359"]
+]},
+
+// ===================== 21. NỘI 4 =====================
+{id:21, name:"Nội 4", phone:"0220.3 899 025", staff:[
+  ["Bs Phương B|0968.508.819"],["Bs Phương A|0382.965.715"],["Bs Trang|0973.041.015"],["Bs Huệ|0962.977.091"],
+  ["Bs Thương|0965.767.835"],["Bs Dung|0963.220.510"],["Bs Phương A|0382.965.715"],["Bs Phương B|0968.508.819"],
+  ["Bs Thương|0965.767.835"],["Bs Huệ|0962.977.091"],["Bs Phương A|0382.965.715"],["Bs Dung|0963.220.510"],
+  ["Bs Phương B|0968.508.819"],["Bs Thương|0965.767.835"],["Bs Phương A|0382.965.715"],["Bs Dung|0963.220.510"],
+  ["Bs Huệ|0962.977.091"],["Bs Thương|0965.767.835"],["Bs Phương A|0382.965.715"],["Bs Phương B|0968.508.819"],
+  ["Bs Dung|0963.220.510"],["Bs Thương|0965.767.835"],["Bs Phương A|0382.965.715"],["Bs Huệ|0962.977.091"],
+  ["Bs Dung|0963.220.510"],["Bs Phương A|0382.965.715"],["Bs Thương|0965.767.835"],["Bs Dung|0963.220.510"],
+  ["Bs Phương B|0968.508.819"],["Bs Phương A|0382.965.715"],["Bs Thương|0965.767.835"]
+]},
+
+// ===================== 22. THẬN - TNT =====================
+{id:22, name:"Thận - TNT", phone:"0220.3 898 189", staff:[
+  ["Bs Lan|0396.401.969"],["Bs Dịu|0979.265.993"],["Bs Uyên|0981.766.420","Bs Trang|0382.171.278"],["Bs Lan|0396.401.969"],
+  ["Bs Trang|0382.171.278"],["Bs Dịu|0979.265.993"],["Bs Hường|0988.416.103"],["Bs Lan|0396.401.969"],
+  ["Bs Trang|0382.171.278"],["Bs Uyên|0981.766.420","Bs Dịu|0979.265.993"],["Bs Dịu|0979.265.993"],["Bs Lan|0396.401.969"],
+  ["Bs Trang|0382.171.278"],["Bs Hường|0988.416.103"],["Bs Lan|0396.401.969"],["Bs Dịu|0979.265.993"],
+  ["Bs Uyên|0981.766.420","Bs Hường|0988.416.103"],["Bs Trang|0382.171.278"],["Bs Lan|0396.401.969"],["Bs Trang|0382.171.278"],
+  ["Bs Hường|0988.416.103"],["Bs Dịu|0979.265.993"],["Bs Trang|0382.171.278"],["Bs Dịu|0979.265.993","Bs Lan|0396.401.969"],
+  ["Bs Lan|0396.401.969"],["Bs Trang|0382.171.278"],["Bs Dịu|0979.265.993"],["Bs Hường|0988.416.103"],
+  ["Bs Lan|0396.401.969"],["Bs Trang|0382.171.278"],["Bs Uyên|0981.766.420"]
+]},
+
+// ===================== 23. LÃO KHOA =====================
+{id:23, name:"Lão Khoa", phone:"0220.3 896 377", staff:[
+  ["Bs Biên|0904.285.238"],["Bs Nhung|0979.631.710"],["Bs Ngọc|0984.213.119"],["Bs Phương|0982.577.858"],
+  ["Bs Bích|0845.270.700"],["Bs Biên|0904.285.238"],["Bs Nhung|0979.631.710"],["Bs Phương|0982.577.858"],
+  ["Bs Bích|0845.270.700"],["Bs Biên|0904.285.238"],["Bs Ngọc|0984.213.119"],["Bs Nhung|0979.631.710"],
+  ["Bs Phương|0982.577.858"],["Bs Bích|0845.270.700"],["Bs Biên|0904.285.238"],["Bs Ngọc|0984.213.119"],
+  ["Bs Nhung|0979.631.710"],["Bs Bích|0845.270.700"],["Bs Phương|0982.577.858"],["Bs Biên|0904.285.238"],
+  ["Bs Nhung|0979.631.710"],["Bs Bích|0845.270.700"],["Bs Phương|0982.577.858"],["Bs Ngọc|0984.213.119"],
+  ["Bs Biên|0904.285.238"],["Bs Nhung|0979.631.710"],["Bs Bích|0845.270.700"],["Bs Phương|0982.577.858"],
+  ["Bs Biên|0904.285.238"],["Bs Ngọc|0984.213.119"],["Bs Nhung|0979.631.710"]
+]},
+
+// ===================== 24. NỘI TIẾT =====================
+{id:24, name:"Nội tiết", phone:"0220.3 899 026", staff:[
+  ["Bs Hải|0904.065.748"],["Bs Nhã|0975.220.092"],["Bs Nga|0979.790.819"],["Bs Quyên|0387.478.844"],
+  ["Bs Nhã|0975.220.092"],["Bs Hải|0904.065.748"],["Bs Nhã|0975.220.092"],["Bs Thắng|0913.255.868"],
+  ["Bs Nhã|0975.220.092"],["Bs Quyên|0387.478.844"],["Bs Nga|0979.790.819"],["Bs Nhã|0975.220.092"],
+  ["Bs Hải|0904.065.748"],["Bs Nhã|0975.220.092"],["Bs Thắng|0913.255.868"],["Bs Hải|0904.065.748"],
+  ["Bs Nga|0979.790.819"],["Bs Nhã|0975.220.092"],["Bs Thắng|0913.255.868"],["Bs Nhã|0975.220.092"],
+  ["Bs Hải|0904.065.748"],["Bs Thắng|0913.255.868"],["Bs Nhã|0975.220.092"],["Bs Quyên|0387.478.844"],
+  ["Bs Nga|0979.790.819"],["Bs Nhã|0975.220.092"],["Bs Thắng|0913.255.868"],["Bs Nhã|0975.220.092"],
+  ["Bs Hải|0904.065.748"],["Bs Nhã|0975.220.092"],["Bs Quyên|0387.478.844"]
+]},
+
+// ===================== 25. DA LIỄU =====================
+{id:25, name:"Da liễu", phone:"0220.3 899 029", staff:[
+  ["Bs Hưng|0904.510.271"],["Bs Ánh|0985.013.886"],["Bs Hưng|0904.510.271"],["Bs Ánh|0985.013.886"],
+  ["Bs Hưng|0904.510.271"],["Bs Ánh|0985.013.886"],["Bs Hưng|0904.510.271"],["Bs Ánh|0985.013.886"],
+  ["Bs Hưng|0904.510.271"],["Bs Ánh|0985.013.886"],["Bs Hưng|0904.510.271"],["Bs Ánh|0985.013.886"],
+  ["Bs Hưng|0904.510.271"],["Bs Ánh|0985.013.886"],["Bs Hưng|0904.510.271"],["Bs Ánh|0985.013.886"],
+  ["Bs Hưng|0904.510.271"],["Bs Ánh|0985.013.886"],["Bs Hưng|0904.510.271"],["Bs Ánh|0985.013.886"],
+  ["Bs Hưng|0904.510.271"],["Bs Ánh|0985.013.886"],["Bs Hưng|0904.510.271"],["Bs Ánh|0985.013.886"],
+  ["Bs Hưng|0904.510.271"],["Bs Ánh|0985.013.886"],["Bs Hưng|0904.510.271"],["Bs Ánh|0985.013.886"],
+  ["Bs Hưng|0904.510.271"],["Bs Ánh|0985.013.886"],["Bs Hưng|0904.510.271"]
+]},
+
+// ===================== 26. YHCT =====================
+{id:26, name:"YHCT", phone:"0220.3 899 028", staff:[
+  ["Bs.Hạnh|0969.613.015"],["Bs.Hải|0974.009.487"],["Bs.V.Anh|0979.799.597"],["Bs Nga|0904.890.806"],
+  ["Bs Mai|0353.774.391"],["Bs.Hạnh|0969.613.015"],["Bs Tuyền|0973.040.668"],["Bs.V.Anh|0979.799.597"],
+  ["Bs.Hải|0974.009.487"],["Bs Phương|0915.792.299"],["Bs.Hạnh|0969.613.015"],["Bs Mai|0353.774.391"],
+  ["Bs.V.Anh|0979.799.597"],["Bs Tuyền|0973.040.668"],["Bs.Hạnh|0969.613.015"],["Bs Phương|0915.792.299"],
+  ["Bs Mai|0353.774.391"],["Bs Nga|0904.890.806"],["Bs Phương|0915.792.299"],["Bs.Hạnh|0969.613.015"],
+  ["Bs.Hải|0974.009.487"],["Bs Nga|0904.890.806"],["Bs Mai|0353.774.391"],["Bs.V.Anh|0979.799.597"],
+  ["Bs Phương|0915.792.299"],["Bs Mai|0353.774.391"],["Bs Nga|0904.890.806"],["Bs Tuyền|0973.040.668"],
+  ["Bs Phương|0915.792.299"],["Bs.V.Anh|0979.799.597"],["Bs Mai|0353.774.391"]
+]},
+
+// ===================== 27. TRUYỀN NHIỄM =====================
+{id:27, name:"Truyền nhiễm", phone:"0220.3 899 032", staff:[
+  ["Bs Liên|0396.962.116"],["Bs Hương|0385.597.446"],["Bs Thái|0989.060.897"],["Bs Liên|0396.962.116"],
+  ["Bs Thanh|0904.286.304"],["Bs Hương|0385.597.446"],["Bs Quyền|0904.186.084"],["Bs Thái|0989.060.897"],
+  ["Bs Liên|0396.962.116"],["Bs Thanh|0904.286.304"],["Bs Thái|0989.060.897"],["Bs Hương|0385.597.446"],
+  ["Bs Thanh|0904.286.304"],["Bs Quyền|0904.186.084"],["Bs Thái|0989.060.897"],["Bs Liên|0396.962.116"],
+  ["Bs Hương|0385.597.446"],["Bs Thanh|0904.286.304"],["Bs Thái|0989.060.897"],["Bs Liên|0396.962.116"],
+  ["Bs Hương|0385.597.446"],["Bs Thanh|0904.286.304"],["Bs Thái|0989.060.897"],["Bs Liên|0396.962.116"],
+  ["Bs Hương|0385.597.446"],["Bs Thanh|0904.286.304"],["Bs Thái|0989.060.897"],["Bs Quyền|0904.186.084"],
+  ["Bs Liên|0396.962.116"],["Bs Hương|0385.597.446"],["Bs Thanh|0904.286.304"]
+]},
+
+// ===================== 28. NHI =====================
+{id:28, name:"Nhi", phone:"0220.3 899 031", staff:[
+  ["Bs Lan|0379.621.340"],["Bs Khánh|0326.614.666"],["Bs Linh|0969.284.856"],["Bs Dương|0983.748.055"],
+  ["Bs Vân|0936.586.297"],["Bs Lan|0379.621.340"],["Bs Hiền|0988.099.969"],["Bs Dương|0983.748.055"],
+  ["Bs Vân|0936.586.297"],["Bs Khánh|0326.614.666"],["Bs Lan|0379.621.340"],["Bs Dương|0983.748.055"],
+  ["Bs Vân|0936.586.297"],["Bs Hiền|0988.099.969"],["Bs Dương|0983.748.055"],["Bs Khánh|0326.614.666"],
+  ["Bs Linh|0969.284.856"],["Bs Lan|0379.621.340"],["Bs Hiền|0988.099.969"],["Bs Vân|0936.586.297"],
+  ["Bs Dương|0983.748.055"],["Bs Lan|0379.621.340"],["Bs Linh|0969.284.856"],["Bs Hiền|0988.099.969"],
+  ["Bs Dương|0983.748.055"],["Bs Lan|0379.621.340"],["Bs Vân|0936.586.297"],["Bs Hiền|0988.099.969"],
+  ["Bs Dương|0983.748.055"],["Bs Linh|0969.284.856"],["Bs Khánh|0326.614.666"]
+]},
+
+// ===================== 29. KCB TỰ NGUYỆN =====================
+{id:29, name:"KCB Tự nguyện", phone:"0220.3 892 386", staff:[
+  ["Bs Hòa|0368.376.246"],["Bs Đức Anh|0868.018.718"],["Bs Kiên|0986.380.803"],["Bs Huệ|0973.021.223"],
+  ["Bs Thắng|0978.577.677"],["Bs Nga A|0918.923.332"],["Bs Đức Anh|0868.018.718"],["Bs Huệ|0973.021.223"],
+  ["Bs Kiên|0986.380.803"],["Bs Hòa|0368.376.246"],["Bs Nga A|0918.923.332"],["Bs Thắng|0978.577.677"],
+  ["Bs Kiên|0986.380.803"],["Bs Đức Anh|0868.018.718"],["Bs Hòa|0368.376.246"],["Bs Huệ|0973.021.223"],
+  ["Bs Nga A|0918.923.332"],["Bs Đức Anh|0868.018.718"],["Bs Phương|0968.508.819"],["Bs Hòa|0368.376.246"],
+  ["Bs Huệ|0973.021.223"],["Bs Nga A|0918.923.332"],["Bs Kiên|0986.380.803"],["Bs Hòa|0368.376.246"],
+  ["Bs Đức Anh|0868.018.718"],["Bs Thắng|0978.577.677"],["Bs Kiên|0986.380.803"],["Bs Huệ|0973.021.223"],
+  ["Bs Đức Anh|0868.018.718"],["Bs Nga A|0918.923.332"],["Bs Kiên|0986.380.803"]
+]},
+
+// ===================== 30. THẦN KINH =====================
+{id:30, name:"Thần kinh", phone:"0220.3 899 027", staff:[
+  ["Bs Hùng|0982.710.719"],["Bs Hiệp|0983.603.806"],["Bs Hùng|0982.710.719"],["Bs Minh|0925.362.236"],
+  ["Bs Hiệp|0983.603.806"],["Bs Dũng|0985.255.751"],["Bs Hùng|0982.710.719"],["Bs Hiệp|0983.603.806"],
+  ["Bs Dũng|0985.255.751"],["Bs Minh|0925.362.236"],["Bs Hiệp|0983.603.806"],["Bs Hùng|0982.710.719"],
+  ["Bs Dũng|0985.255.751"],["Bs Hiệp|0983.603.806"],["Bs Minh|0925.362.236"],["Bs Hùng|0982.710.719"],
+  ["Bs Dũng|0985.255.751"],["Bs Hiệp|0983.603.806"],["Bs Hùng|0982.710.719"],["Bs Dũng|0985.255.751"],
+  ["Bs Hiệp|0983.603.806"],["Bs Hùng|0982.710.719"],["Bs Dũng|0985.255.751"],["Bs Hùng|0982.710.719"],
+  ["Bs Minh|0925.362.236"],["Bs Dũng|0985.255.751"],["Bs Hiệp|0983.603.806"],["Bs Hùng|0982.710.719"],
+  ["Bs Dũng|0985.255.751"],["Bs Hiệp|0983.603.806"],["Bs Dũng|0985.255.751"]
+]},
+
+// ===================== 31. PHCN =====================
+{id:31, name:"PHCN", phone:"0220.3 899 030", staff:[
+  ["Huyền|0971.309.885"],["Nhung|0383.873.234"],["Thơ|0369.530.939"],["Thảo|0976.330.187"],
+  ["Vân|0944.300.110"],["Tuyết|0343.286.737"],["Thắm|0902.067.166"],["Tăng|0912.233.607"],
+  ["Thanh|0988.643.057"],["Thu Hà|0946.939.559"],["Minh|0778.303.100"],["Ngân|0969.097.816"],
+  ["Đăng|0983.567.130"],["Bs Cường|0356.227.486"],["Tuyến|0906.183.288"],["Bs Lê Thảo|0349.466.382"],
+  ["Huyền|0971.309.885"],["Vân|0944.300.110"],["Thơ|0369.530.939"],["Thảo|0976.330.187"],
+  ["Tuyết|0343.286.737"],["Tăng|0912.233.607"],["Đăng|0983.567.130"],["Thắm|0902.067.166"],
+  ["Ngân|0969.097.816"],["Thanh|0988.643.057"],["Thu Hà|0946.939.559"],["Bs Cường|0356.227.486"],
+  ["Bs Lê Thảo|0349.466.382"],["Minh|0778.303.100"],["Tuyến|0906.183.288"]
+]},
+
+// ===================== 32. DƯỢC =====================
+{id:32, name:"Dược", phone:"0220.3 899 014", staff:[
+  ["Vũ Sơn|0395.124.957","Thanh Sơn|0965.668.817"],["Giang|0925.442.098","Anh Phương|0364.143.972"],
+  ["Phong|0985.540.538","Ng Anh|0868.902.528"],["Phương|0336.226.486","Nam Huy|0336.968.983"],
+  ["Linh Hương|0347.295.279","Mai|0852.596.085"],["Quyết|0982.840.512","Thịnh|0343.113.602"],
+  ["Hằng|0904.990.899","H. Trang|0901.513.006"],["Nga|0973.175.999","Tr. Trang|0981.670.264"],
+  ["Lê Huyền|0979.948.543","Hạnh|0914.908.275"],["Loan|0936.595.386","Khoa|0949.913.955"],
+  ["Nhung|0974.169.958","Ng. Thảo|0582.523.540"],["Hằng|0904.990.899","Mai|0852.596.085"],
+  ["Vũ Sơn|0395.124.957","Thanh Sơn|0965.668.817"],["Đan|0363.258.886","Xinh|0367.379.284"],
+  ["Ngô Dũng|0972.238.886","Lan Anh|0961.657.934"],["Đào Thảo|0976.545.330","P. Liên|0796.477.834"],
+  ["Hương|0962.078.758","Thịnh|0343.113.602"],["Phạm Trang|0962.858.348","Đức Anh|0965.669.551"],
+  ["Trung|0978.008.118","Nam Huy|0336.968.983"],["Thái Dương|0817.286.765","Luận|0776.185.386"],
+  ["Đan|0363.258.886","Ng. Thảo|0582.523.540"],["Linh Hương|0347.295.279","Xinh|0367.379.284"],
+  ["Tiến|0386.187.588","Trà|0911.390.050"],["Đ. Trang|0397.315.279","Hạnh|0914.908.275"],
+  ["Đỗ Huy|0357.920.793","Trần Trang|0981.670.264"],["Thái Dương|0817.286.765","Lê Hiền|0379.055.563"],
+  ["Liên|0963.868.366","Lan Anh|0961.657.934"],["Quyết|0982.840.512","H. Trang|0901.513.006"],
+  ["Trung|0978.008.118","P. Liên|0796.477.834"],["Lê Loan|0963.686.926","Yến|0367.947.664"],
+  ["Lê Hương|0961.496.128","Anh Phương|0364.143.972"]
+]},
+
+// ===================== 33. HHLS =====================
+{id:33, name:"HHLS", phone:"0220.3 899 015", staff:[
+  ["Bs Hồng|0348.204.404"],["Bs Tuyền|0916.906.289"],["Bs Hồng|0348.204.404"],["Bs Huyền|0976.648.756"],
+  ["Bs Tuyền|0916.906.289"],["Bs Hồng|0348.204.404"],["Bs Hoàng|0916.604.181"],["Bs Tuyền|0916.906.289"],
+  ["Bs Hồng|0348.204.404"],["Bs Tuyền|0916.906.289"],["Bs Hồng|0348.204.404"],["Bs Huyền|0976.648.756"],
+  ["Bs Tuyền|0916.906.289"],["Bs Hoàng|0916.604.181"],["Bs Huyền|0976.648.756"],["Bs Hồng|0348.204.404"],
+  ["Bs Tuyền|0916.906.289"],["Bs Huyền|0976.648.756"],["Bs Hồng|0348.204.404"],["Bs Huyền|0976.648.756"],
+  ["Bs Hoàng|0916.604.181"],["Bs Hồng|0348.204.404"],["Bs Tuyền|0916.906.289"],["Bs Hồng|0348.204.404"],
+  ["Bs Tuyền|0916.906.289"],["Bs Huyền|0976.648.756"],["Bs Tuyền|0916.906.289"],["Bs Hoàng|0916.604.181"],
+  ["Bs Huyền|0976.648.756"],["Bs Hồng|0348.204.404"],["Bs Tuyền|0916.906.289"]
+]},
+
+// ===================== 34. XÉT NGHIỆM =====================
+{id:34, name:"Xét nghiệm", phone:"0220.3 899 017", staff:[
+  ["V.Anh|0353.220.841"],["Linh|0963.459.923"],["N.Dũng|0382.594.655"],["Thắng|0961.449.490"],
+  ["Thịnh|0918.489.715"],["N.Dũng|0382.594.655"],["Dung|0399.963.392"],["Cường|0983.875.577"],
+  ["Hiệp|0966.163.773"],["Linh|0963.459.923"],["N.Dũng|0382.594.655"],["V Tùng|0969.204.752"],
+  ["N.Dũng|0382.594.655"],["Quý|0982.163.827"],["Linh|0963.459.923"],["Cường|0983.875.577"],
+  ["V Tùng|0969.204.752"],["Hiền|0962.595.534"],["Thắng|0961.449.490"],["V Tùng|0969.204.752"],
+  ["N.Dũng|0382.594.655"],["S Tùng|0983.795.956"],["Cường|0983.875.577"],["Thắng|0961.449.490"],
+  ["N.Dũng|0382.594.655"],["Hiệp|0966.163.773"],["V.Anh|0353.220.841"],["Thịnh|0918.489.715"],
+  ["Hiền|0962.595.534"],["V Tùng|0969.204.752"],["Hiền|0962.595.534"]
+]},
+
+// ===================== 35. VI SINH =====================
+{id:35, name:"Vi sinh", phone:"0220.3 899 016", staff:[
+  ["Nhung|0988.799.807"],["N.Hằng|0348.478.894"],["Hà|0969.784.613","N.Hằng|0348.478.894"],["Trang|0987.950.605","Hà|0969.784.613"],
+  ["Hiền|0964.865.993"],["Trưởng|0984.563.836"],["Thùy|0974.747.645"],["L.Hằng|0982.832.577"],
+  ["Hiệu|0977.961.698"],["L.Hằng|0982.832.577","Hiệu|0977.961.698"],["N.Hằng|0348.478.894","Trang|0987.950.605"],["Hiền|0964.865.993"],
+  ["Nhung|0988.799.807"],["Trưởng|0984.563.836"],["Hà|0969.784.613"],["Thùy|0974.747.645"],
+  ["Hiền|0964.865.993","Thùy|0974.747.645"],["Nhung|0988.799.807","Đồng|0969.051.837"],["Hiệu|0977.961.698"],["Trang|0987.950.605"],
+  ["Hà|0969.784.613"],["L.Hằng|0982.832.577"],["Nhung|0988.799.807","Nhung|0988.799.807"],["Trưởng|0984.563.836","N.Hằng|0348.478.894"],
+  ["Thùy|0974.747.645"],["Hiền|0964.865.993"],["Trang|0987.950.605"],["Hà|0969.784.613"],
+  ["Đồng|0969.051.837"],["Trưởng|0984.563.836"],["Hiệu|0977.961.698","L.Hằng|0982.832.577"]
+]},
+
+// ===================== 36. CĐHA =====================
+{id:36, name:"CĐHA", phone:"0220.3 899 018", staff:[
+  ["Bs Hiệp|0962.796.797"],["Bs Hoàng|0979.840.421"],["Bs Ngọc|0349.466.667"],["Bs Hưng A|0375.932.225"],
+  ["Bs Hiệp|0962.796.797"],["Bs Hưng A|0375.932.225"],["Bs Việt|0904.404.334"],["Bs Hiệp|0962.796.797"],
+  ["Bs Hoàng|0979.840.421"],["Bs Phương|0397.322.690"],["Bs Hiệp|0962.796.797"],["Bs Hưng A|0375.932.225"],
+  ["Bs Hoàng|0979.840.421"],["Bs Việt|0904.404.334"],["Bs Hưng A|0375.932.225"],["Bs Sơn|0375.831.870"],
+  ["Bs Ngọc|0349.466.667"],["Bs Hưng B|0355.828.122"],["Bs Hiệp|0962.796.797"],["Bs Hưng A|0375.932.225"],
+  ["Bs Việt|0904.404.334"],["Bs Hiệp|0962.796.797"],["Bs Hoàng|0979.840.421"],["Bs Phương|0397.322.690"],
+  ["Bs Hiệp|0962.796.797"],["Bs Hưng A|0375.932.225"],["Bs Hưng B|0355.828.122"],["Bs Việt|0904.404.334"],
+  ["Bs Hiệp|0962.796.797"],["Bs Hoàng|0979.840.421"],["Bs Ngọc|0349.466.667"]
+]},
+
+// ===================== 37. GPB =====================
+{id:37, name:"GPB", phone:"0220.3 899 021", staff:[
+  ["Nhàn|0976.910.922"],["Hà|0977.805.220"],["Nhàn|0976.910.922"],["Hà|0977.805.220"],
+  ["Nhàn|0976.910.922"],["Hà|0977.805.220"],["Nhàn|0976.910.922"],["Hà|0977.805.220"],
+  ["Nhàn|0976.910.922"],["Hà|0977.805.220"],["Nhàn|0976.910.922"],["Hà|0977.805.220"],
+  ["Nhàn|0976.910.922"],["Hà|0977.805.220"],["Nhàn|0976.910.922"],["Hà|0977.805.220"],
+  ["Nhàn|0976.910.922"],["Hà|0977.805.220"],["Nhàn|0976.910.922"],["Hà|0977.805.220"],
+  ["Nhàn|0976.910.922"],["Hà|0977.805.220"],["Nhàn|0976.910.922"],["Hà|0977.805.220"],
+  ["Nhàn|0976.910.922"],["Hà|0977.805.220"],["Nhàn|0976.910.922"],["Hà|0977.805.220"],
+  ["Nhàn|0976.910.922"],["Hà|0977.805.220"],["Nhàn|0976.910.922"]
+]},
+
+// ===================== 38. KSNK =====================
+{id:38, name:"KSNK", phone:"0220.3 899 020", staff:[
+  ["Đạt|0388.485.609"],["Huyền B|0982.932.289"],["Hoa B|0989.203.862"],["Tâm|0972.765.054"],
+  ["Hồng|0967.110.690"],["Hoa B|0989.203.862"],["Tâm|0972.765.054"],["Hoa B|0989.203.862"],
+  ["Hải B|0962.333.626"],["Huyền B|0982.932.289"],["Hồng|0967.110.690"],["Đạt|0388.485.609"],
+  ["Phượng|0365.367.789"],["Loan B|0979.991.894"],["Tâm|0972.765.054"],["Huyền B|0982.932.289"],
+  ["Hoa B|0989.203.862"],["Đạt|0388.485.609"],["Hoa A|0917.681.666"],["Hoa B|0989.203.862"],
+  ["Phượng|0365.367.789"],["Hoa A|0917.681.666"],["Hồng|0967.110.690"],["Phượng|0365.367.789"],
+  ["Hải B|0962.333.626"],["Hoa A|0917.681.666"],["Hoa B|0989.203.862"],["Hồng|0967.110.690"],
+  ["Hải B|0962.333.626"],["Đạt|0388.485.609"],["Hoa A|0917.681.666"]
+]},
+
+// ===================== 39. TDCN =====================
+{id:39, name:"TDCN", phone:"0220.3 899 013", staff:[
+  ["Bs Hân|0334.510.888"],["Bs Tùng|0912.486.028"],["Bs Dung|0974.749.837"],["Bs Hân|0334.510.888"],
+  ["Bs Hòa|0368.376.246"],["Bs Tú Anh|0986.747.261"],["Bs Dung|0974.749.837"],["Bs Hân|0334.510.888"],
+  ["Bs Tùng|0912.486.028"],["Bs Tú Anh|0986.747.261"],["Bs Hân|0334.510.888"],["Bs Hòa|0368.376.246"],
+  ["Bs Tú Anh|0986.747.261"],["Bs Hân|0334.510.888"],["Bs Dung|0974.749.837"],["Bs Tùng|0912.486.028"],
+  ["Bs Tú Anh|0986.747.261"],["Bs Dung|0974.749.837"],["Bs Hân|0334.510.888"],["Bs Dung|0974.749.837"],
+  ["Bs Tú Anh|0986.747.261"],["Bs Hòa|0368.376.246"],["Bs Tùng|0912.486.028"],["Bs Dung|0974.749.837"],
+  ["Bs Hân|0334.510.888"],["Bs Hòa|0368.376.246"],["Bs Tú Anh|0986.747.261"],["Bs Hân|0334.510.888"],
+  ["Bs Dung|0974.749.837"],["Bs Tùng|0912.486.028"],["Bs Tú Anh|0986.747.261"]
+]},
+
+// ===================== 40. KHÁM BỆNH =====================
+{id:40, name:"Khám bệnh", phone:"0220.3 899 011", staff:[
+  ["Lan Anh|0978.291.859"],["Vân Anh|0972.972.296"],["Thanh Hoa|0865.100.285"],["Huyền|0969.847.195"],
+  ["Hạnh|0976.420.458"],["Duyên|0915.517.171"],["Thu|0383.236.823"],["Thủy|0976.420.458"],
+  ["Oanh|0918.250.893"],["Thanh Hoa|0865.100.285"],["Lan Anh|0978.291.859"],["Vân Anh|0972.972.296"],
+  ["Thanh Hoa|0865.100.285"],["Huyền|0969.847.195"],["Hạnh|0976.420.458"],["Duyên|0915.517.171"],
+  ["Thu|0383.236.823"],["Thủy|0976.420.458"],["Oanh|0918.250.893"],["Huyền|0969.847.195"],
+  ["Lan Anh|0978.291.859"],["Vân Anh|0972.972.296"],["Thanh Hoa|0865.100.285"],["Huyền|0969.847.195"],
+  ["Hạnh|0976.420.458"],["Duyên|0915.517.171"],["Thu|0383.236.823"],["Thủy|0976.420.458"],
+  ["Oanh|0918.250.893"],["Duyên|0915.517.171"],["Lan Anh|0978.291.859"]
+]},
+
+// ===================== 41. ĐỘT QUỴ =====================
+{id:41, name:"Đột quỵ", phone:"0220.3 895 115", staff:[
+  ["Bs Thịnh B|0355.029.061"],["Bs Giang|0382.582.193"],["Bs Tảo|0964.247.930"],["Bs Giang A|0382.582.193"],
+  ["Bs Thịnh B|0355.029.061"],["Bs Tảo|0964.247.930"],["Bs Thịnh A|0904.486.715"],["Bs Thịnh B|0355.029.061"],
+  ["Bs Giang A|0382.582.193"],["Bs Tảo|0964.247.930"],["Bs Thịnh B|0355.029.061"],["Bs Giang A|0382.582.193"],
+  ["Bs Tảo|0964.247.930"],["Bs Thịnh A|0904.486.715"],["Bs Giang A|0382.582.193"],["Bs Tảo|0964.247.930"],
+  ["Bs Thịnh B|0355.029.061"],["Bs Giang A|0382.582.193"],["Bs Tảo|0964.247.930"],["Bs Thịnh B|0355.029.061"],
+  ["Bs Thịnh A|0904.486.715"],["Bs Giang A|0382.582.193"],["Bs Thịnh B|0355.029.061"],["Bs Thành|0904.322.261"],
+  ["Bs Giang|0382.582.193"],["Bs Tảo|0964.247.930"],["Bs Thịnh B|0355.029.061"],["Bs Thịnh A|0904.486.715"],
+  ["Bs Giang A|0382.582.193"],["Bs Thịnh B|0355.029.061"],["Bs Tảo|0964.247.930"]
+]},
+
+// ===================== 42. KB TRỰC TUYẾN =====================
+{id:42, name:"KB trực tuyến", phone:"", staff:[
+  ["Quỳnh|0973.531.280"],["Thu Anh|0982.666.180","Hương|0942.311.385"],["Hồng|0389.142.528"],[],
+  ["Thu Anh|0982.666.180"],["Hà|0858.585.885"],["Hồng|0389.142.528"],["Nga|0988.674.756"],
+  ["Hương|0942.311.385"],["Hà|0858.585.885","Nga|0988.674.756"],["Thu Anh|0982.666.180"],["Hương|0942.311.385"],
+  ["Hồng|0389.142.528"],["Quỳnh|0973.531.280"],["Thu Anh|0982.666.180"],["Hà|0858.585.885"],
+  ["Thu Anh|0982.666.180","Hồng|0389.142.528"],["Hà|0858.585.885"],["Quỳnh|0973.531.280"],["Hương|0942.311.385"],
+  ["Nga|0988.674.756"],["Hồng|0389.142.528"],["Hà|0858.585.885"],["Hương|0942.311.385","Thu Anh|0982.666.180"],
+  ["Hồng|0389.142.528"],["Hà|0858.585.885"],["Hương|0942.311.385"],["Nga|0988.674.756"],
+  ["Thu Anh|0982.666.180"],["Quỳnh|0973.531.280"],["Hà|0858.585.885"]
+]},
+
+// ===================== 43. TTBVSKCB =====================
+{id:43, name:"TTBVSKCB", phone:"", staff:[
+  ["Bs Mai|0979.759.860"],["Bs Ngọc Anh|0982.831.015"],["Bs Dung|0987.433.347"],["Bs Quỳnh|0964.543.373"],
+  ["Bs Mai|0979.759.860"],["Bs Ngọc Anh|0982.831.015"],["Bs Dung|0987.433.347"],["Bs Quỳnh|0964.543.373"],
+  ["Bs Mai|0979.759.860"],["Bs Ngọc Anh|0982.831.015"],["Bs Dung|0987.433.347"],["Bs Quỳnh|0964.543.373"],
+  ["Bs Mai|0979.759.860"],["Bs Ngọc Anh|0982.831.015"],["Bs Dung|0987.433.347"],["Bs Quỳnh|0964.543.373"],
+  ["Bs Mai|0979.759.860"],["Bs Ngọc Anh|0982.831.015"],["Bs Dung|0987.433.347"],["Bs Quỳnh|0964.543.373"],
+  ["Bs Mai|0979.759.860"],["Bs Ngọc Anh|0982.831.015"],["Bs Dung|0987.433.347"],["Bs Quỳnh|0964.543.373"],
+  ["Bs Mai|0979.759.860"],["Bs Ngọc Anh|0982.831.015"],["Bs Dung|0987.433.347"],["Bs Quỳnh|0964.543.373"],
+  ["Bs Mai|0979.759.860"],["Bs Ngọc Anh|0982.831.015"],["Bs Dung|0987.433.347"]
+],
+extraRow: [
+  ["Bs Mai|0979.759.860"],["Bs Mai|0979.759.860"],["Bs Mai|0979.759.860"],["Bs Mai|0979.759.860"],
+  ["Bs Sơn|0915.545.333"],["Bs Sơn|0915.545.333"],["Bs Sơn|0915.545.333"],["Bs Sơn|0915.545.333"],
+  ["Bs Sơn|0915.545.333"],["Bs Sơn|0915.545.333"],["Bs Sơn|0915.545.333"],["Bs Mai|0979.759.860"],
+  ["Bs Sơn|0915.545.333"],["Bs Mai|0979.759.860"],["Bs Mai|0979.759.860"],["Bs Mai|0979.759.860"],
+  ["Bs Sơn|0915.545.333"],["Bs Mai|0979.759.860"],["Bs Sơn|0915.545.333"],["Bs Sơn|0915.545.333"],
+  ["Bs Sơn|0915.545.333"],["Bs Sơn|0915.545.333"],["Bs Sơn|0915.545.333"],["Bs Sơn|0915.545.333"],
+  ["Bs Sơn|0915.545.333"],["Bs Mai|0979.759.860"],["Bs Mai|0979.759.860"],["Bs Mai|0979.759.860"],
+  ["Bs Sơn|0915.545.333"],["Bs Mai|0979.759.860"],["Bs Mai|0979.759.860"]
+], extraLabel: "Thường trú"}
+];
+
+// ============================================================
+// STATE
+// ============================================================
+let state = {
+  search: '',
+  filterDept: '',
+  onlyToday: false,
+  expanded: new Set()
+};
+
+// ============================================================
+// HELPERS
+// ============================================================
+function parsePerson(str) {
+  if (!str) return null;
+  const parts = str.split('|');
+  const name = (parts[0] || '').trim();
+  const phone = (parts[1] || '').trim();
+  if (!name) return null;
+  return { name, phone };
+}
+
+function filterDepts() {
+  const term = state.search.toLowerCase().trim();
+  return DEPTS.filter(d => {
+    if (state.filterDept && d.name !== state.filterDept) return false;
+    if (state.onlyToday) {
+      const staff = d.staff[TODAY_DATE-1] || [];
+      if (!staff.length) return false;
+    }
+    if (!term) return true;
+    if (d.name.toLowerCase().includes(term)) return true;
+    if (d.phone && d.phone.includes(term)) return true;
+    for (const dayStaff of d.staff) {
+      for (const p of dayStaff) {
+        if (p && p.toLowerCase().includes(term)) return true;
+      }
+    }
+    return false;
+  });
+}
+
+function highlight(text, term) {
+  if (!term) return escapeHtml(text);
+  const safe = escapeHtml(text);
+  const regex = new RegExp(`(${escapeRegex(term)})`, 'gi');
+  return safe.replace(regex, '<mark style="background:#fff3a0;padding:0 2px;border-radius:3px">$1</mark>');
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function escapeRegex(s) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+// ============================================================
+// RENDER
+// ============================================================
+function renderStats() {
+  const el = document.getElementById('statsBar');
+  const totalDepts = DEPTS.length;
+  const todayDepts = DEPTS.filter(d => (d.staff[TODAY_DATE-1]||[]).length > 0).length;
+  const totalShifts = DEPTS.reduce((s, d) => s + d.staff.reduce((a, day) => a + day.filter(p => p && p.trim()).length, 0), 0);
+  el.innerHTML = `
+    <div class="stat-mini"><div class="n">${totalDepts}</div><div class="l">Khoa</div></div>
+    <div class="stat-mini"><div class="n">${todayDepts}</div><div class="l">Hôm nay</div></div>
+    <div class="stat-mini"><div class="n">${totalShifts}</div><div class="l">Lượt trực</div></div>
+    <div class="stat-mini"><div class="n">${DAYS}</div><div class="l">Ngày</div></div>
+  `;
+}
+
+function renderDepts() {
+  const el = document.getElementById('deptList');
+  const filtered = filterDepts();
+  const term = state.search.toLowerCase().trim();
+  
+  if (!filtered.length) {
+    el.innerHTML = `<div class="empty">
+      <div class="icon">🔍</div>
+      <h3>Không tìm thấy kết quả</h3>
+      <p>Thử thay đổi từ khóa hoặc bộ lọc</p>
+    </div>`;
+    return;
+  }
+  
+  let html = '';
+  filtered.forEach(dept => {
+    const isExpanded = state.expanded.has(dept.id);
+    const todayStaff = (dept.staff[TODAY_DATE-1] || []).filter(p => p && p.trim());
+    
+    html += `<div class="dept-card ${isExpanded ? 'expanded' : ''}">
+      <div class="dept-header" onclick="toggleDept(${dept.id})">
+        <div class="expand-arrow">▶</div>
+        <div class="dept-num">${dept.id}</div>
+        <div class="dept-name">${highlight(dept.name, term)}</div>
+        ${dept.phone ? `<div class="dept-phone">☎ ${dept.phone}</div>` : ''}
+      </div>`;
+    
+    // Pill "Hôm nay"
+    if (todayStaff.length) {
+      const people = todayStaff.map(p => parsePerson(p)).filter(Boolean);
+      const text = people.map(p => {
+        const nameHtml = highlight(p.name, term);
+        return p.phone ? `${nameHtml} · <a class="phone" href="tel:${p.phone.replace(/\./g,'')}">${p.phone}</a>` : nameHtml;
+      }).join(', ');
+      html += `<div class="today-staff"><span class="label">Hôm nay:</span><span>${text}</span></div>`;
+    }
+    
+    // Detail expanded
+    html += `<div class="dept-detail">
+      <div class="detail-title">📋 Lịch trực cả tháng · ${dept.name}</div>
+      <div class="day-list">`;
+    
+    for (let d = 1; d <= DAYS; d++) {
+      const staff = (dept.staff[d-1] || []).filter(p => p && p.trim());
+      if (!staff.length) continue;
+      
+      const info = DATES[d-1];
+      const isToday = TODAY_DATE === d;
+      let itemCls = 'day-item';
+      if (isToday) itemCls += ' is-today';
+      else if (info.isSunday) itemCls += ' is-sunday';
+      else if (info.isWeekend) itemCls += ' is-weekend';
+      
+      html += `<div class="${itemCls}">
+        <div class="day-num">${String(d).padStart(2,'0')}/10<span class="wd">${info.weekday}</span></div>
+        <div class="day-staff">`;
+      
+      staff.forEach(p => {
+        const person = parsePerson(p);
+        if (!person) return;
+        const isBs = /^Bs/i.test(person.name);
+        const nameHtml = highlight(person.name, term);
+        html += `<span class="staff-tag ${isBs ? 'bs' : ''}">
+          ${nameHtml}
+          ${person.phone ? `<a href="tel:${person.phone.replace(/\./g,'')}">📞</a>` : ''}
+        </span>`;
+      });
+      
+      html += `</div></div>`;
+    }
+    
+    // Extra row (thường trú / trực phụ)
+    if (dept.extraRow && dept.extraRow.some(r => r && r.length)) {
+      html += `<div style="margin-top:10px;padding-top:10px;border-top:1px dashed #dadce0">
+        <div class="detail-title" style="margin-bottom:6px">👥 ${dept.extraLabel || 'Bổ sung'}</div>`;
+      dept.extraRow.forEach((staff, idx) => {
+        const valid = (staff || []).filter(p => p && p.trim());
+        if (!valid.length) return;
+        const d = idx + 1;
+        const info = DATES[d-1];
+        const isToday = TODAY_DATE === d;
+        let itemCls = 'day-item';
+        if (isToday) itemCls += ' is-today';
+        else if (info.isSunday) itemCls += ' is-sunday';
+        else if (info.isWeekend) itemCls += ' is-weekend';
+        
+        html += `<div class="${itemCls}">
+          <div class="day-num">${String(d).padStart(2,'0')}/10<span class="wd">${info.weekday}</span></div>
+          <div class="day-staff">`;
+        valid.forEach(p => {
+          const person = parsePerson(p);
+          if (!person) return;
+          const nameHtml = highlight(person.name, term);
+          html += `<span class="staff-tag">${nameHtml}${person.phone ? ` <a href="tel:${person.phone.replace(/\./g,'')}">📞</a>` : ''}</span>`;
+        });
+        html += `</div></div>`;
+      });
+      html += `</div>`;
+    }
+    
+    html += `</div></div></div>`;
+  });
+  
+  el.innerHTML = html;
+}
+
+function renderFilter() {
+  const sel = document.getElementById('deptFilter');
+  sel.innerHTML = '<option value="">-- Tất cả khoa --</option>';
+  DEPTS.forEach(d => {
+    sel.innerHTML += `<option value="${d.name}">${d.id}. ${d.name}</option>`;
+  });
+}
+
+function toggleDept(id) {
+  if (state.expanded.has(id)) state.expanded.delete(id);
+  else state.expanded.add(id);
+  renderDepts();
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+// EVENTS
+document.getElementById('searchInput').addEventListener('input', e => {
+  state.search = e.target.value;
+  renderDepts();
+});
+
+document.getElementById('deptFilter').addEventListener('change', e => {
+  state.filterDept = e.target.value;
+  renderDepts();
+});
+
+document.getElementById('btnToday').addEventListener('click', function() {
+  state.onlyToday = !state.onlyToday;
+  this.classList.toggle('active');
+  this.innerHTML = state.onlyToday ? '✕ Bỏ lọc' : '📍 Hôm nay';
+  if (state.onlyToday) showToast(`Đang lọc khoa trực ngày ${TODAY_DATE}/10`);
+  renderDepts();
+});
+
+document.querySelectorAll('.nav-item').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const nav = btn.dataset.nav;
+    if (nav === 'today') {
+      state.onlyToday = true;
+      const bt = document.getElementById('btnToday');
+      bt.classList.add('active');
+      bt.innerHTML = '✕ Bỏ lọc';
+      state.expanded.clear();
+      renderDepts();
+      showToast(`📍 Ngày ${TODAY_DATE}/10/2026`);
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    } else if (nav === 'list') {
+      state.onlyToday = false;
+      const bt = document.getElementById('btnToday');
+      bt.classList.remove('active');
+      bt.innerHTML = '📍 Hôm nay';
+      renderDepts();
+    } else if (nav === 'search') {
+      document.getElementById('searchInput').focus();
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    } else if (nav === 'info') {
+      showToast('BVĐK Hải Dương · Lịch trực T10/2026');
+    }
+  });
+});
+
+// INIT
+document.getElementById('todayBadge').textContent = TODAY_DATE;
+renderStats();
+renderFilter();
+renderDepts();
+</script>
+
+</body>
+</html>
